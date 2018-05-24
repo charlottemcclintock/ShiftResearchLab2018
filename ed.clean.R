@@ -69,5 +69,23 @@ cmas.school$proficiency <- as.numeric(cmas.school$proficiency) # coerce proficie
 cmas.school <- aggregate(cmas.school$proficiency, by=list(district=cmas.school$district, school=cmas.school$school, 
                                                    content=cmas.school$content), data=cmas.school, FUN=mean)
 cmas.school <- rename(cmas.school, "proficiency"="x")
-# write the useful objects as CSVs
 
+# ..................................................................................................
+
+# MERGE SCHOOL LIST WITH GEO INFO
+
+# read in school geographic information
+geo <- read_csv("schoolgeo.csv")
+geo <- filter(geo, setting=="Denver Metro") # filter to denver metro area
+geo <- filter(geo, !county=="WELD") # remove weld county to get to consistent 7
+unique(geo$county)
+
+# rename school name variable
+geo <- rename(geo, "school"="name")
+
+# inner join CMAS and geography information
+cmas.school <- inner_join(geo, cmas.school, by=c("school", "district"))
+
+# write the useful objects as CSVs
+write.csv(cmas.school, "clean.proficiency.csv")
+write.csv(hs, "clean.hsgrad.csv")
