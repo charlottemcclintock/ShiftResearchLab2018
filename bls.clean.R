@@ -10,7 +10,7 @@
 rm(list=ls())
 getwd()
 # if need be setwd("~/../../")
-setwd("R/ShiftResearchLab2018/bls-denverish")
+setwd("R/ShiftResearchLab2018/data-bls")
 
 # set up: libraries
 library(dplyr)
@@ -67,6 +67,11 @@ sum(bls.gen$jobs_1000) # 999.99 # good
 n_distinct(bls.spec$occ_code1) # 22
 nrow(bls.gen) # 22
 
+check <- filter(bls.spec, is.na(a_median))
+n_distinct(check$occ_title)
+
+# ..................................................................................................
+
 # add a variable to account for spread
 bls.gen <- mutate(bls.gen, 
                   quartilespread = a_pct75-a_pct25)
@@ -77,10 +82,28 @@ bls.spec <- mutate(bls.spec,
 ggplot(bls.gen, aes(a_median, quartilespread)) + geom_point() + geom_smooth(method="lm", se = FALSE)
 ggplot(bls.spec, aes(a_median, quartilespread)) + geom_point() + geom_smooth(method="lm", se = FALSE)
 
+# ..................................................................................................
+
+# add gen to spec to get an industry variable
+
+bls.ind <- select(bls.gen, occ_code1, occ_title)
+bls.ind <- rename(bls.ind, "industry"="occ_title")
+
+bls.spec <- left_join(bls.spec, bls.ind, by="occ_code1")
+
+
+# ..................................................................................................
+
 # write objects as clean csv files
 write.csv(bls.gen, "clean.bls.gen.csv")
 write.csv(bls.spec, "clean.bls.spec.csv")
 
+# ..................................................................................................
 
+rm(list = ls(pattern = "all")) 
+rm(list = ls(pattern = "ind")) 
+rm(list = ls(pattern = "gen")) 
+
+save.image("wages.Rdata")
 
 

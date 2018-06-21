@@ -6,11 +6,12 @@
 
 # ..................................................................................................
 
-# set up: wd, retrieve encrypted data
+# set up: wd, retrieve data
 rm(list=ls())
 getwd()
-# if need be setwd("~/../../")
-setwd("R/ShiftResearchLab2018/commute")
+# if need be 
+setwd("~/../../")
+setwd("Users/charmed33/R/ShiftResearchLab2018/data-commute")
 
 # set up: libraries
 library(dplyr)
@@ -117,8 +118,19 @@ arb <- anti_join(nbhd.avg, nbhd.avg2, by="name")
 # Federal Center # Rocky Mountain Arsenal
 # one tract each with a missing avg commute and missing travel time, will be excluded
 
+nbhd.avg3 <- aggregate(nbhd2$avgcommute,by=list(name=nbhd2$nhname, nhid=nbhd2$nhid), data=nbhd2, FUN=median)
+nbhd.avg3 <- rename(nbhd.avg3, "medcommute"="x")
+
+check <- left_join(nbhd.avg2, nbhd.avg3, by = c("name", "nhid"))
+
+check <- mutate(check, delt = avgcommute-medcommute) 
+# difference between average and median always less than 2 minutes, usually 0 
+
 # rename for ease of use
 avgcmt <- nbhd.avg2
+
+# number of distinct neighborhoods
+n_distinct(avgcmt$name) # 261
 
 # ..................................................................................................
 
@@ -132,8 +144,18 @@ avgcmt <- mutate(avgcmt, # difference between nbhd and avg
 
 # write the object as a csv for later use
 write.csv(nbhd, "clean.nbhdcommutes.csv")
-write.csv(nbhd.avg2, "clean.avgcommute.csv")
+write.csv(avgcmt, "clean.avgcommute.csv")
 
+rm(list = ls(pattern = "arb")) 
+rm(list = ls(pattern = "commute")) 
+rm(list = ls(pattern = "info")) 
+rm(list = ls(pattern = "match"))
+rm(list = ls(pattern = "nbhd"))
+rm(list = ls(pattern = "nh"))
+rm(list = ls(pattern = "travel"))
+rm(list = ls(pattern = "na.check"))
+
+save.image("commute.Rdata")
 # ..................................................................................................
 
 # TO DO LIST:
