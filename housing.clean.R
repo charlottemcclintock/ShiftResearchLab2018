@@ -10,7 +10,7 @@
 rm(list=ls())
 getwd()
 # if need be setwd("~/../../")
-setwd("Users/charmed33/R/ShiftResearchLab2018/final-data")
+setwd("ShiftResearchLab2018/final-data")
 
 # set up: libraries
 library(dplyr)
@@ -49,56 +49,61 @@ check <- mutate(adams1,
 
 # ..................................................................................................
 
-load("wages.Rdata")
+load("wages.Rdata") # load the BLS data 
 
-wages <- select(bls.spec, industry, occ_title, a_median)
+wages <- select(bls.spec, industry, occ_title, a_median) # select useful variables
 wages <- mutate(wages, 
-                housing = 2.6*a_median)
+                housing = 2.6*a_median) # create a housing metric 
 
-parcels <- select(adams1, totalacctval, nhname)
+parcels <- select(adams1, totalacctval, nhname) # select useful parcel data
 
-df <- map2(wages$occ_title, wages$a_median, ~ parcels %>% transmute(!! .x :=  totalacctval < 2.6 * .y)) %>% bind_cols(parcels, .)
-df$nhname <- as.factor(df$nhname)
-
-df.nbhd <- df %>% 
-  group_by(nhname) %>%
-  count()
-
-df.check <- df %>% group_by(nhname) %>% summarise()
+# compare each of the home values to an affordability metric specific to each occupation, 
+# and populate a data frame with TRUE/FALSE
+df <- map2(wages$occ_title, wages$a_median, ~ parcels %>% 
+             transmute(!! .x :=  totalacctval < 2.6 * .y)) %>% bind_cols(parcels, .)
+df$nhname <- as.factor(df$nhname) # neighborhood name as factor
 
 # ..................................................................................................
 
+# convert all the TRUE/FALSE values to 1/0s, TRUE = 1, FALSE = 0
 df[,3:653] <- lapply(df[,3:653], as.numeric)
 
-df$nhname <- as.factor(df$nhname)
-
+# sum every occupation by neighborhood, should give the count of true values
 aff <- df %>%
   group_by(nhname) %>% 
   summarise_all(funs(sum))
 
+# remove the total value column, we don't need this now
 aff <- select(aff, - totalacctval)
 
+# count the number of parcels in each neighborhood
 df.nbhd <- df %>% 
   group_by(nhname) %>%
   count()
 
+# add a neighborhood total column to the data
 aff <- left_join(aff, df.nbhd, by="nhname")
 
+# divide each column the values in the total column
 aff <- with(aff, cbind(nhname, aff[!names(aff) %in% c("nhname", "n")]/n, n))
 
 # library(data.table) # another way of doing it
-# aff2 <- setDT(aff)[, lapply(.SD, `/`, aff$n), .SDcols = `Chief Executives`:`Material Moving Workers, All Other`]
+# aff2 <- setDT(aff)[, lapply(.SD, `/`, aff$n), .SDcols = 
+# `Chief Executives`:`Material Moving Workers, All Other`]
 
-aff <- gather(aff, `Chief Executives`:`Material Moving Workers, All Other`, key="occupation", value="affordability")
-
+# gather the data from wide to long so occupation is a column for the shiny app
+aff <- gather(aff, `Chief Executives`:`Material Moving Workers, All Other`, 
+              key="occupation", value="affordability")
+# multiply the data set by 100 to get percents
 aff <- mutate(aff, 
               affordability = 100*affordability)
 
+# 13 occupations with no median annual, why?
 check <- filter(aff, is.na(aff$affordability))
 n_distinct(check$occupation)
 # ..................................................................................................
 
-
+# get rid of things we don't want to save
 rm(list = ls(pattern = "adams")) 
 rm(list = ls(pattern = "bls")) 
 rm(list = ls(pattern = "df")) 
@@ -108,6 +113,7 @@ rm(list = ls(pattern = "check"))
 
 # ..................................................................................................
 
+# save to use later
 save.image("adams.Rdata")
 
 

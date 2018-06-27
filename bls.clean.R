@@ -86,9 +86,11 @@ ggplot(bls.spec, aes(a_median, quartilespread)) + geom_point() + geom_smooth(met
 
 # add gen to spec to get an industry variable
 
-bls.ind <- select(bls.gen, occ_code1, occ_title)
+# create a matching table
+bls.ind <- select(bls.gen, occ_code1, occ_title) 
 bls.ind <- rename(bls.ind, "industry"="occ_title")
 
+# join to data
 bls.spec <- left_join(bls.spec, bls.ind, by="occ_code1")
 
 
@@ -104,6 +106,7 @@ rm(list = ls(pattern = "all"))
 rm(list = ls(pattern = "ind")) 
 rm(list = ls(pattern = "gen")) 
 
+# save the data to use later
 save.image("wages.Rdata")
 
 
