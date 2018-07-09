@@ -2,15 +2,17 @@
 ## C. McClintock 
 ## Shift Research Lab 
 ## Summer 2018 ## Updated: June 21, 2018 
-## Housing Affordability Tool App: UI & Server
+## HOME Tool App: UI & Server
 
 # ..................................................................................................
 
 # set up: wd, retrieve data
 rm(list=ls())
 getwd()
-# if need be setwd("~/../../") setwd("Users/charmed33/R/")
-# setwd("ShiftResearchLab2018/app/HousingAffordabilityTool")
+# if need be 
+# setwd("~/../../")
+# setwd("Users/charmed33/R/")
+# setwd("ShiftResearchLab2018/app/HOMEtool")
 
 library(knitr)
 library(tidyverse)
@@ -19,63 +21,58 @@ library(plotly)
 library(DT)
 library(shinythemes)
 library(markdown)
+library(rsconnect)
+
 
 load("wages.Rdata")
 load("ed.Rdata")
 load("commute.Rdata")
-load("adams.Rdata")
 
-avgcommute <- select(avgcmt, name, avgcommute) # load in the commute data
-avgcommute <- rename(avgcommute, "nbhd"="name") # rename for merge
-schools <- select(all, nbhd, schoolquality) # load in the clean school data
-schools <- mutate(schools,
-                     schoolquality=100*schoolquality)
+avgcommute <- select(avgcmt, nhname, avgcommute) # load in the commute data
+avgcommute <- rename(avgcommute, "nbhd"="nhname") # rename for merge
+schools <- select(ed, nhname, schoolquality) # load in the clean school data
+schools <- rename(schools, "nbhd"="nhname") # rename for merge
 
-affordable <- aff # load in the housing affordabiity data
-affordable <- mutate(affordable,
-                     affordability=100*affordability)
-affordable <- rename(affordable, "nbhd"="nhname") # rename for merge
+data <- left_join(schools, avgcommute, by="nbhd") # join schools and commute time
 
-data <- left_join(schools, avgcommute, by="nbhd") # join schools and commute time 
-data <- left_join(data, affordable, by="nbhd") # add affordable housing. 
+nbhd <- select(data, nbhd)
 
-bls.spec <- arrange(bls.spec, industry)
+parcels <- read_csv("parcels.csv") %>% select(homevalue, nbhd, county) %>% filter(!nbhd=="Kennedy")
+
+parcels.nbhd <- parcels %>% 
+  group_by(nbhd) %>%
+  count()
+parcels.nbhd <- rename(parcels.nbhd, "ntotal"="n")
 
 
-t <- list(
-  family = "sans-serif",
-  size = 12,
-  color = 'black')
+parcels.county <- parcels %>% 
+  group_by(county, nbhd) %>%
+  count() %>% select(-n)
+
+bls.spec <- arrange(bls.spec, industry, occ_title)
 
 ui <- shinyUI(fluidPage(theme = "bootstrap.css",
                 tags$p(" "),
                 sidebarPanel(
-                  tags$img(height = 87, src = "tool.png"),
+                  tags$img(height = 130, src = "tool.png"),
                   br(),
-                  tags$p("With this tool, you can explore Denver metro area neighborhoods by housing affordability, school quality, and commute time. When you select an occupation, the graph will display the percent of houses in each neighborhood that are affordable based on the median income in Denver for that occupation. Each neighborhood also has a school quality rating, determined based on the reading and math proficiency and graduation rate of the nearest schools. When you hover over a point, you’ll be able to see information about each neighborhood."),
+                  tags$p("This tool allows users to explore housing affordability, school quality, 
+                         and  average commute time in the Denver metro area by industry and occupation. 
+                         For more information, or to see the code that produced this application, click", 
+                         tags$a(href = "https://github.com/charlottemcclintock/ShiftResearchLab2018", "here.")),
                   tags$p("To begin, select an industry and occupation:"),
                   htmlOutput("industry_selector"),
                   htmlOutput("occupation_selector"), 
-                  tags$a(href = "https://www.shiftresearchlab.org", tags$img(height = 80, src = "logo.png"))
+                  tags$a(href = "https://www.shiftresearchlab.org", tags$img(height = 90, src = "logo.png"))
                 ),
-                mainPanel(tags$h3("Housing Affordability and Access to Quality Education by Occupation"),
-                          plotlyOutput("plot")
+                mainPanel(tags$h3("Housing Affordability and Access to Quality Education by Occupation"), 
+                          plotlyOutput("plot") 
                           ) # close main panel 
                        ) # close fluid page
             ) # close shinyUI
 
 server <- shinyServer(function(input, output) {
-  
-  output$plot <- renderPlotly({
-    plot_ly(data = subset(data, data$occupation==input$occupation), x = ~schoolquality, y = ~affordability, type = 'scatter', mode = 'markers',
-            color = ~avgcommute, colors = 'Blues', marker = 
-              list(size = ~avgcommute, opacity = 0.5), hoverinfo = 'text',
-            text = ~paste(nbhd, '<br>', round(affordability, 1), 'percent of homes are affordable',  '<br>', round(schoolquality,1), 'percentile for Denver area schools', '<br>', round(avgcommute,0), "minute average commute time")) %>%
-      layout(autosize = F, width = 850, height = 550,
-             xaxis = list(title = 'School Quality',   zeroline = FALSE),
-             yaxis = list(title = 'Percent Affordable Housing'),
-             colorbar = list(title = 'Average Commute Time'))  %>% colorbar(title = "Average Commute Time")
-            })
+
   
   output$industry_selector <- renderUI({
     
@@ -83,7 +80,7 @@ server <- shinyServer(function(input, output) {
       inputId = "industry", 
       label = "Industry:",
       choices = as.character(unique(bls.spec$industry)), # add an empty string c(" ", data) for no default
-      selected = NULL, 
+      selected = bls.spec[1,28], 
       multiple = F)
     
   })
@@ -95,13 +92,71 @@ server <- shinyServer(function(input, output) {
     selectInput(
       inputId = "occupation", 
       label = "Occupation:",
-      choices = unique(available),
-      selected = NULL, 
+      choices = c("Industry Median Wage", unique(available)),
+      selected = "Industry Median Wage", 
       multiple = F)
     
   })
-})
+  
+  x <- reactive({input$occupation})
+  
+  
+  occ <- reactive({
+    if (x()=="Industry Median Wage") {
+      bls.gen %>% 
+          select(industry, a_median) %>%
+          filter(bls.gen$industry==input$industry)
+    } else {
+      bls.spec %>% 
+          select(occ_title, a_median) %>%
+          filter(bls.spec$occ_title==input$occupation)
+    }
+  })  
+  
+  df <- reactive({
+      df <- parcels %>%
+      filter(homevalue < 3.6*as.data.frame(occ())[1,2]) %>% 
+      group_by(nbhd) %>%
+      count() %>% 
+      ungroup() %>% 
+      rename("nless"="n") %>% left_join(parcels.nbhd, by = "nbhd") %>% 
+      mutate(affordable = 100*nless/ntotal) %>% right_join(nbhd, by="nbhd") %>% 
+        left_join(parcels.county, by = "nbhd")
+      df$affordable <- ifelse(is.na(df$affordable), 0, df$affordable)
+      df <- right_join(df, data, by = "nbhd")
+  })
+  
+  output$plot <- renderPlotly({
+    plot_ly(data = as.data.frame(df()), 
+            x = ~schoolquality, 
+            y = ~affordable, 
+            type = 'scatter', 
+            size = ~avgcommute,
+            color = ~county, 
+            colors = 'Blues', 
+            mode = 'markers', 
+            marker = list(
+              sizeref=0.2,
+              sizemode='area'), 
+            hoverinfo = 'text',
+            text = ~paste(nbhd, '<br>', county,'<br>', round(affordable, 1), 
+                          'percent of homes are affordable', 
+                          '<br>', round(schoolquality,1), 
+                          'percent grade level proficiency', 
+                          '<br>', round(avgcommute,0), 
+                          "minute average commute time"), width = 850) %>%
+      layout(autosize = F, 
+             xaxis = list(title = 'School Quality',   zeroline = FALSE),
+             yaxis = list(title = 'Percent Affordable Housing'))  %>% 
+              colorbar(title = "Average Commute Time")
+     })
+
+  })
+    
+  
+    
 ##
 shinyApp(ui = ui, server = server)
 
+# deployApp()
 

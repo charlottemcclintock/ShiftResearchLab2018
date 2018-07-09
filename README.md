@@ -1,9 +1,8 @@
-# ShiftResearchLab2018
-Working to transform data into actionable information that improves the social sector's ability to serve Colorado's low-income communities. 
 
-## About This Project
-##### Housing Affordability and Access to Quality Education by Occupation
-The aim of this project is to develop a tool where a user selects her occupation from a list, and is shown a graph of neighborhoods in the Denver metropolitan area by percent of houses in a given neighborhood that are afforable given the median occupational wages for a selected occupation, and reading and math proficiency and high school graduation rates for schools in that neighborhood. The points would then also be scaled by average commute time.
+## the HOME tool
+##### Housing by Occupational Median Earnings
+
+The aim of this project is to develop a tool where users can select an industry or occupation and explore Denver neighborhoods by housing affordability, school quality, and commute time to quickly and more fully inform users on how occupational choice affects quality of life variables. A user selects her industry and occupation, and based on the annual median income for that occupation in the Denver area, she is shown an interactive graph of Denver neighborhoods.
 
 ## Data & Sources
 * Median Occupational Wages *from the Bureau of Labor Statistics*
@@ -14,32 +13,29 @@ The aim of this project is to develop a tool where a user selects her occupation
 * Average Commute Time *from the American Community Survey*
     + [ACS 2016 (5-Year Estimates)](https://www.socialexplorer.com/tables/ACS2016_5yr/R11709778) from Social Explorer, for the seven county Denver metro area, with tracts matched to neighborhoods. 
 * Housing Affordability Data *from each of the seven counties in the Denver area*
-    + Adams County
-    + Arapahoe County
-    + Boulder County
-    + Broomfield County
-    + Denver County
-    + Douglas County
-    + Jefferson County
+    + [Adams County](http://www.adcogov.org/gisdata)
+    + [Arapahoe County](http://www.co.arapahoe.co.us/1151/GIS-Data-Download)
+    + [Boulder County](https://www.bouldercounty.org/property-and-land/assessor/data-download/)
+    + [Broomfield County](http://opendata.broomfield.org/datasets/parcels)
+    + [Denver County](https://www.denvergov.org/opendata/dataset/city-and-county-of-denver-parcels)
+    + [Douglas County](https://gis-dougco.opendata.arcgis.com/datasets/bdbf1ab37f5a43a694c341a6cb355ae5_1)
+    + [Jefferson County](http://data-jeffersoncounty.opendata.arcgis.com/datasets/parcel)
 
 ## Methodology
 
 #### Occupational Wages
 
-Occupational wage data comes from the Bureau of Labor Statistics, from the 2017 calendar year. The data was filtered to the "Denver-Aurora-Lakewood, CO" area. The tool will utilize the annual median wages data, and the user will be able to select first their industry, and then their occupation, based on BLS occupation and industry classifications.
+Median annual occupation wage data comes from the Bureau of Labor Statistics, from the 2017 calendar year, narrowed to the "Denver-Aurora-Lakewood, CO" statistical area. A user can select either industry alone for a broad perspective, or industry and occupation for more narrowly tailored results.
 
 Cleaning script can be found in `bls.clean.R`. 
 
 
 #### School Quality
 
-School quality is determined by CMAS proficiency in reading and math and high school graduation rates. Both data sets were retrieved from the Colorado Department of Education data portal. Schools were matched to neighborhoods by geographic location through a geospatial join in QGIS.  
+School quality is determined by CMAS proficiency in reading and math for the three closest elementary, middle, and high schools. CMAS proficiency data was retrieved from the Colorado Department of Education data portal. Schools were matched to neighborhoods by geographic location through a geospatial join in QGIS.  
 
-CMAS data was aggregated by grade, then by subject area to create an average proficiency score for each school. School level data was then aggregated by neighborhood to create an average proficiency score for each neighborhood. 3 neighborhoods had high school graduation rates, but no CMAS scores, and 119 neighborhoods had CMAS scores but no high school graduation rates. The measures of central tendency and distributions for the CMAS data and the graduation rate date were different, so rather than take the average, the both data sets were given percentile scores and then an average was taken where both values existed which became the school quality measure. Where only one value existed, that become the school quality measure. 
+CMAS data was aggregated by school level (elementary, middle, high) for each neighborhood, then by neighborhood as a whole to create an average proficiency score for each school.
 
-This is thus a relative metric, with each neighborhoods schools given a score relative to all other neighborhoods in the Denver metro area. 
-
-Qs: Should this be absolute? Is there a better way to combine the data? 
 
 Cleaning script can be found in `ed.clean.R`. 
 
@@ -51,7 +47,7 @@ Cleaning script can be found in `acs.clean.R`.
 
 #### Housing Affordability
 
-Parcel data was retrieved from the Adams, Arapahoe, Broomfield, Boulder, Denver, Douglas, and Jefferson County assessor's offices. 
+Parcel data was retrieved from the Adams, Arapahoe, Broomfield, Boulder, Denver, Douglas, and Jefferson County assessor's offices. Where unit data was available, the total parcel value was divided by number of units and each unit was counted separately. Where unit data was not available, the data was restricted to single family homes.
 
 Cleaning script can be found in `housing.clean.R`. 
 

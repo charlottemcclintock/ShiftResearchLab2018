@@ -1,0 +1,225 @@
+"","nbhd","schoolquality","avgcommute"
+"1","Alder-Three Sisters Park",82.8671328671329,32
+"2","Allendale",58.5751748251748,25
+"3","Arvada Center",23.6276223776224,33
+"4","Athmar Park",49.2395104895105,25
+"5","Baker",64.3269230769231,25
+"6","Bear Valley",31.7132867132867,29
+"7","Benedict Park, Central Brighton",22.5524475524476,26.5
+"8","Berrian Mountain",80.1048951048951,38
+"9","Big Dry Creek",50.0961538461538,26
+"10","Capitol Hill",22.534965034965,22.6666666666667
+"11","Centennial Airport",41.4073426573427,22
+"12","Central Commerce City",47.6048951048951,30.3333333333333
+"13","Central East Aurora",32.5699300699301,32
+"14","Central Northglenn",18.0506993006993,28.75
+"15","Central south Littleton",78.6276223776224,26.5
+"16","Central West Broomfield",80.0437062937063,26
+"17","Charles Whitlock Rec Park and Morse Park",10.0087412587413,26
+"18","Chautauqua, Table Mesa, and Devil's Thumb",95.1748251748252,21.5
+"19","Cherry Creek Reservoir",86.9055944055944,24.5
+"20","City Park",62.298951048951,22
+"21","City Park West",13.4615384615385,23
+"22","Civic Center",3.84615384615385,19
+"23","Clark Centennial Park",50.5332167832168,24
+"24","Clayton",43.9335664335664,28
+"25","Clement Park",77.3164335664336,25
+"26","Dekoevend Park",74.8076923076923,23.6666666666667
+"27","Delmar Parkway, Jewell Heights, and Hoffman Heights",10.4458041958042,30.8333333333333
+"28","East Arapaphoe",63.5926573426573,36.5
+"29","East central Englewood",27.4562937062937,25.875
+"30","East Old Golden RD",19.3006993006993,27
+"31","Exposition Park and Aurora Hills",38.6975524475524,29.3076923076923
+"32","Glover, Plum Creek Fairway and Crystal Valley Ranch",14.6153846153846,25.5
+"33","Green Valley Ranch",33.9772727272727,31.5
+"34","Gunbarrel Area",41.9755244755245,20
+"35","Hackberry Hill",51.6171328671329,29
+"36","Harvey Park",29.2307692307692,28.5
+"37","Harvey Park South",31.3636363636364,27
+"38","Hayden Green Mountain Park",46.284965034965,25.8
+"39","Heritage Eagle Bend",74.4405594405594,31
+"40","Heritage Hills and Stonegate",42.1765734265734,24.5555555555556
+"41","Highland",31.1101398601399,22.5
+"42","Highlands",86.9667832167832,NA
+"43","Highlands Ranch East",63.8374125874126,24.9
+"44","Highlands Ranch West",79.0297202797203,26.5555555555556
+"45","Hine Lake, Powderhorn Park and Westbury Park",72.5524475524475,28.5
+"46","Jefferson Park",42.8758741258741,23
+"47","Kamemoto Park",28.0681818181818,25
+"48","Ken Caryl Ranch",71.8006993006993,29.75
+"49","Lac Amora Park and Zangs Spur Park",71.8356643356643,27.6666666666667
+"50","Lakota Hills, Golden Proper",67.6398601398601,20.6666666666667
+"51","Laredo Highline",18.4178321678322,32
+"52","Lemon Gulch",60.3409090909091,30.6666666666667
+"53","Lincoln Park",18.5751748251748,21.5
+"54","Long Lake Ranch Park and North Table Mountain",65.6381118881119,29
+"55","Louisville and Southeast Boulder Valley",63.1206293706294,21.3333333333333
+"56","Lyons and Rabbit Mountain",88.4003496503496,29
+"57","Mar Lee",27.8059440559441,28
+"58","Montbello",25.0437062937063,28.1666666666667
+"59","Mount Carbon Park and Westgate",84.0646853146853,28
+"60","Nederland and Boulder Mountain Park",56.6433566433566,31.5
+"61","North Capitol Hill",32.3251748251748,24.5
+"62","North Central Westminster",78.5052447552447,27.75
+"63","North Park Hill",49.2657342657343,25
+"64","North Thornton",44.5716783216783,30.2857142857143
+"65","Northeast Adams",47.8846153846154,34.5
+"66","Northeast Broomfield",70.743006993007,27.75
+"67","Northeast Lakewood",27.972027972028,25.25
+"68","Northwest Lakewood",33.0594405594406,23.875
+"69","Northwest Sheridan",10.8041958041958,26
+"70","Okane Park, Washington Heights Park",27.1241258741259,25.2
+"71","Olympic Park",47.8583916083916,28.8
+"72","Pinery Park",76.8881118881119,30
+"73","Pomona",49.7377622377622,30
+"74","Red Hawk and Solitude Colorado",66.9493006993007,30
+"75","Rocky Mountain Arsenal",24.2832167832168,NA
+"76","Skyland",27.6748251748252,26
+"77","South Commerce City",13.4965034965035,25.5
+"78","South Lakewood",60.4020979020979,27
+"79","South Park Hill",95.9090909090909,22
+"80","South Westminster",15.4108391608392,27.8333333333333
+"81","Southeast Aurora",30.743006993007,27
+"82","Southeast Centennial",80.6118881118881,26
+"83","Southeast Lafayette and Rock Creek Farm Park",41.9055944055944,NA
+"84","Southmoor Park",60.4632867132867,22
+"85","Southwest Thornton",21.6520979020979,27.6666666666667
+"86","Stapleton",80.5332167832168,25
+"87","Sunnyside",14.2832167832168,24
+"88","Todd Creek and East Thornton",72.6923076923077,32.6666666666667
+"89","Twin Lakes, Berkely, and West North Washington",21.8006993006993,27.1428571428571
+"90","University Hills(Boulder County)",59.4318181818182,17
+"91","Utah Park",26.8531468531469,25.75
+"92","Valverde",4.80769230769231,30
+"93","Van Aredale and Harvest",87.0629370629371,30
+"94","Walnut Grove, Westbrook, Countryside and Crownpoint",59.1258741258741,28
+"95","Washington Park",58.1818181818182,22
+"96","Washington Virginia Vale",52.8146853146853,25.3333333333333
+"97","West Boulder including Ward and Jamestown",63.4090909090909,25.3333333333333
+"98","West Colfax",4.11713286713287,24
+"99","West Greenwood Village",52.8234265734266,20.75
+"100","West Niwot",82.7097902097902,24
+"101","Westwood",10.472027972028,28.5
+"102","Whittier(Boulder County)",81.9405594405594,18.5
+"103","Whittier(Denver County)",26.520979020979,23
+"104","Wyco Park, Northeast Northglenn",73.6101398601399,28
+"105","Alta Vista and Memorial Park",23.6363636363636,25.5
+"106","Applewood, Echo Hill, Rolling Hills and Meadows",90.4545454545455,26
+"107","Aurora Highlands and Side Creek",4.09090909090909,31.6666666666667
+"108","Barnum",2.27272727272727,28
+"109","Barnum West",19.5454545454545,26
+"110","Barr Lake State Park",57.2727272727273,30.6666666666667
+"111","Bell Park",95,31
+"112","Berkeley",36.3636363636364,24.5
+"113","Bowels Grove Park",65.4545454545455,28
+"114","Castle Pines North",80,27.3333333333333
+"115","Castlewood Ranch",49.0909090909091,30
+"116","Central North Broomfield",82.2727272727273,32
+"117","Chaffee Park",5,22
+"118","Chambers Heights and Laredo Highline",16.3636363636364,33
+"119","Cherry Creek",98.1818181818182,24
+"120","Cherry Hills Village Area",99.0909090909091,21
+"121","Clubcrest",79.0909090909091,31
+"122","Cole",14.0909090909091,25
+"123","College View",39.0909090909091,34
+"124","Congress Park",85,21
+"125","Conservatory",63.6363636363636,28
+"126","Continental Divide Raceway, Dawson Butte and True Mountain",55.4545454545455,33
+"127","Cory-Merrill",87.7272727272727,23
+"128","Country Club",25,20
+"129","Derby, Southeast Thornton, and Southwest Commerce City",1.36363636363636,26.5
+"130","Dover Square Park",24.5454545454545,25.5
+"131","East Brighton",46.8181818181818,32
+"132","East Colfax",9.54545454545455,28
+"133","East Columbine",97.7272727272727,25
+"134","East Roxborough Park",41.8181818181818,34
+"135","Elk Meadow Park",43.1818181818182,32
+"136","Elyria Swansea",2.72727272727273,24
+"137","Far Horizons",14.5454545454545,28
+"138","Federal Heights Federal Heights and Sherrelwood",15,27.4285714285714
+"139","Five Points",95.9090909090909,22.6666666666667
+"140","Flatirons and Grant",74.0909090909091,20
+"141","Fort Logan",25.9090909090909,28.3333333333333
+"142","Fruitdale, Kipling and I-70 & Clearcreek",21.3636363636364,22
+"143","Garden Acres Park",26.8181818181818,24
+"144","Genesee Park",96.3636363636364,28
+"145","Globeville",20.4545454545455,24
+"146","Golden Gate Canyon and Coal Creek Canyon",88.6363636363636,32
+"147","Goldsmith",72.7272727272727,26
+"148","Hale",45.9090909090909,23
+"149","Hampden",31.8181818181818,24.25
+"150","Hampden South",58.1818181818182,21.3333333333333
+"151","Harriman Lake, Weaver Hollow Park and Blue Heron Park",72.2727272727273,29.4
+"152","Highlands Ranch Southeast",83.6363636363636,27
+"153","Highlands, Prkway, Wood Creek and Hackbrhl",11.8181818181818,24
+"154","Highlands, Prkway, Wood Creek and Hackbrhl",11.8181818181818,31
+"155","Hilltop",89.0909090909091,23
+"156","Holly Hills",35.9090909090909,23
+"157","Homestead Park and Columbine",10.4545454545455,26.3333333333333
+"158","Indian Creek",70,26
+"159","Lake Arbor",33.6363636363636,28
+"160","Larmar Heights",25.4545454545455,25
+"161","Littleton North",6.36363636363636,28
+"162","Lowry Field",49.5454545454545,25
+"163","Mapleton Hill, Newlands, and Juniper / Kalmia",96.8181818181818,20
+"164","Marston",29.5454545454545,NA
+"165","Martin Acres, Majestic Heights, and Superior",93.1818181818182,22.4
+"166","McIntosh Park",75,25
+"167","Mission Viejo",42.2727272727273,27
+"168","Mitchell Culch Park",31.3636363636364,27
+"169","Montclair",32.7272727272727,25
+"170","Montview Park",0.909090909090909,28.6
+"171","Mount Falcon Canyon Park",99.5454545454545,34
+"172","North Aurora",5.45454545454545,27.75
+"173","North StandleyLake Open Space Park",75.9090909090909,24
+"174","Northeast Centennial",73.6363636363636,28.6923076923077
+"175","Northeast Littleton",53.1818181818182,24
+"176","Northeast Park Hill",1.81818181818182,26.5
+"177","Northeast Parker",60.9090909090909,26.3333333333333
+"178","Northwest Arvada",53.6363636363636,24.5
+"179","Oakhurst Park, Sherwood Park",59.0909090909091,27.25
+"180","Old North Boulder",34.5454545454545,18
+"181","Parker North and Parker Heights",65.9090909090909,25
+"182","Platte Park",39.5454545454545,20
+"183","Quail Crossing Park",64.0909090909091,28
+"184","Ralston",89.5454545454545,24
+"185","Riverdale Park and South Thornton",28.6363636363636,29.7142857142857
+"186","Roosevelt Park and Sunset Park",12.7272727272727,24
+"187","Rough & Ready Park and Stephen Day Park",56.8181818181818,26.5
+"188","Ruby Hill",29.0909090909091,26.5
+"189","Scenic Heights",35,28
+"190","Sierra Vista",84.0909090909091,27
+"191","Skiline, Arvada Plaza and Terrace Park",17.7272727272727,26
+"192","Sloans Lake",21.8181818181818,24.5
+"193","South Littleton",91.3636363636364,24
+"194","South Marston Lake",75.4545454545455,28
+"195","South Standley Lake",42.7272727272727,27
+"196","Southeast Boulder",94.5454545454545,18
+"197","Southeast Broomfield",71.3636363636364,30.6666666666667
+"198","Southeast Lafayette",69.5454545454545,22.5
+"199","Southwest Longmont",88.1818181818182,19
+"200","Southwest Standley Lake",46.3636363636364,27
+"201","Speer",95.4545454545455,22
+"202","Sullivan",100,26.5
+"203","Summer Valley Park",44.5454545454545,30.6
+"204","Sun Valley",8.63636363636364,28
+"205","University",80.9090909090909,25
+"206","University Hills(Denver County)",84.5454545454545,25.5
+"207","University Park",93.6363636363636,24
+"208","Villa Park",12.2727272727273,28
+"209","Virginia Village",50,25.25
+"210","Washington Park West",57.7272727272727,24.5
+"211","Wayside Meadows Park",70.9090909090909,27.8
+"212","Welby and East North Washington",28.1818181818182,31.5
+"213","Wellshire",98.6363636363636,23
+"214","West Brighton",27.2727272727273,24.3333333333333
+"215","West Centennial",90,24.0769230769231
+"216","West Erie",79.5454545454545,26
+"217","West Highland",40.4545454545455,24
+"218","West Northglenn",36.8181818181818,25
+"219","West Pike National Forest",92.7272727272727,40
+"220","Westminster Center Park",9.09090909090909,23.5
+"221","Westwoods Park",97.2727272727273,32
+"222","Whisper Creek",94.0909090909091,27
+"223","Wonderland, Boulder Meadows, and Catalpa Park",60,19.6666666666667
+"224","Yankee Doodle Park, Ralston Vally and Apex",67.2727272727273,27
