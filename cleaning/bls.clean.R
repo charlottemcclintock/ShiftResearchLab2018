@@ -11,7 +11,7 @@ rm(list=ls())
 getwd()
 # if need be 
 # setwd("~/../../")
-# setwd("Users/charmed33/R/ShiftResearchLab2018/data-bls")
+# setwd("Users/charmed33/R/ShiftResearchLab2018/cleaning/data-bls")
 
 # set up: libraries
 library(dplyr)
@@ -94,7 +94,7 @@ bls.ind <- rename(bls.ind, "industry"="occ_title")
 # join to data
 bls.spec <- left_join(bls.spec, bls.ind, by="occ_code1")
 
-bls.gen <- select(bls.gen, occ_title, a_median)
+bls.gen <- select(bls.gen, occ_title, a_pct10, a_pct25, a_median, a_pct75, a_pct90)
 bls.gen <- rename(bls.gen, "industry"="occ_title")
 
 # ..................................................................................................

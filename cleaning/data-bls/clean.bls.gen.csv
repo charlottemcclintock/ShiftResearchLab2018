@@ -1,0 +1,23 @@
+"","industry","a_pct10","a_pct25","a_median","a_pct75","a_pct90"
+"1","Management Occupations",57300,84990,122810,170510,208000
+"2","Business and Financial Operations Occupations",42170,54530,71850,95080,123820
+"3","Computer and Mathematical Occupations",52530,70270,94210,119800,145100
+"4","Architecture and Engineering Occupations",48720,63890,82810,111530,148160
+"5","Life, Physical, and Social Science Occupations",36720,49030,68330,97620,127820
+"6","Community and Social Service Occupations",28310,36160,47610,61810,78250
+"7","Legal Occupations",45290,63170,89740,148480,207450
+"8","Education, Training, and Library Occupations",26330,34640,48890,68990,90060
+"9","Arts, Design, Entertainment, Sports, and Media Occupations",22190,31800,47330,69220,97870
+"10","Healthcare Practitioners and Technical Occupations",38560,54190,72650,96140,134980
+"11","Healthcare Support Occupations",23410,28160,34490,40940,50400
+"12","Protective Service Occupations",21740,26150,40100,71280,92180
+"13","Food Preparation and Serving Related Occupations",19430,19790,22010,27320,36700
+"14","Building and Grounds Cleaning and Maintenance Occupations",20160,22640,27180,34790,46220
+"15","Personal Care and Service Occupations",19630,20600,24320,32280,46740
+"16","Sales and Related Occupations",19730,22610,33170,60320,99480
+"17","Office and Administrative Support Occupations",23510,29890,38520,50170,62240
+"18","Farming, Fishing, and Forestry Occupations",19470,19740,25020,33300,41120
+"19","Construction and Extraction Occupations",29320,36030,46140,59180,74290
+"20","Installation, Maintenance, and Repair Occupations",28130,36280,49350,64890,80900
+"21","Production Occupations",21770,26560,34920,47130,62700
+"22","Transportation and Material Moving Occupations",20670,25630,35020,47950,64280
