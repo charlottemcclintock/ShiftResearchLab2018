@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1532637580276.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3806042969",
+    "id" : "795BC7BA",
+    "lastKnownWriteTime" : 1532644861,
+    "last_content_update" : 1532644861544,
+    "path" : "~/R/ShiftResearchLab2018/app/HOMEtool/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "532,35",
+        "scrollLine" : "517"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

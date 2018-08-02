@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1532639130527.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1267993664",
+    "id" : "78C43450",
+    "lastKnownWriteTime" : 1532644623,
+    "last_content_update" : 1532644623,
+    "path" : "~/R/ShiftResearchLab2018/cleaning/housing.clean.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "58,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

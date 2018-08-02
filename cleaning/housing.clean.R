@@ -57,11 +57,13 @@ boulder <- rename(boulder, "homevalue"="totalactualval", "nbhd"="nhname")
 boulder$county <- "Boulder County"
 # ..................................................................................................
 
-denver <- read_csv("sf_denver_nh.csv") %>% 
+denver <- read_csv("sf_denver_nh_2.csv") %>% 
   select(units, TOTAL_VALUE, nhname) %>% 
-  mutate(perunit = TOTAL_VALUE/units)
-denver <- denver[rep(1:nrow(denver), denver$units),] %>% select(perunit, nhname)
-denver <- rename(denver, "homevalue"="perunit", "nbhd"="nhname")
+  filter(units<2)
+
+# %>% mutate(perunit = TOTAL_VALUE/units)
+# denver <- denver[rep(1:nrow(denver), denver$units),] %>% select(perunit, nhname)
+denver <- rename(denver, "homevalue"="TOTAL_VALUE", "nbhd"="nhname")
 denver$county <- "Denver County"
 
 # ..................................................................................................

@@ -13,6 +13,7 @@ getwd()
 # setwd("~/../../")
 # setwd("Users/charmed33/R/")
 # setwd("ShiftResearchLab2018/app/HOMEtool")
+setwd("data")
 
 library(knitr)
 library(tidyverse)
@@ -42,6 +43,9 @@ data <- left_join(schools, avgcommute, by="nbhd")
 
 # read in the parcel data
 parcels <- read_csv("parcels.csv") %>% select(homevalue, nbhd, county) %>% filter(!nbhd=="Kennedy")
+
+cap <- parcels %>% filter(nbhd == "Capitol Hill")
+ggplot(cap, aes(x=homevalue, fill=county)) + geom_density(aes(alpha=.5))
 
 # count number of parcels per neighborhood
 parcels.nbhd <- parcels %>% 
@@ -235,10 +239,10 @@ ui <- shinyUI(fluidPage(theme = "bootstrap.css",
             tabPanel("Table",
                      tags$h3("Neighborhoods: Housing, Schools, and Commute Time"),
                      br(),
-                     dataTableOutput("table"))
-#          tabPanel("Density",
- #                  tags$h3("Density Plot of Home Values by County"),
-  #                 plotlyOutput("density"))
+                     dataTableOutput("table")),
+          tabPanel("Density",
+                    tags$h3("Density Plot of Home Values by County"),
+                    plotlyOutput("density"))
                    )
                  ) # close main panel 
              ) # close fluid page
@@ -531,5 +535,6 @@ output$table <- renderDataTable({
 shinyApp(ui = ui, server = server)
 
 # deploy to shinyapps.io
-# deployApp()
+# 
+deployApp()
 

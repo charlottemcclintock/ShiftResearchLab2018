@@ -1,0 +1,9 @@
+{
+    "path" : "~/R/ShiftResearchLab2018/app/HousingAffordabilityTool",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
