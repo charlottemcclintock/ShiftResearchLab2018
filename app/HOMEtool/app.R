@@ -1,7 +1,7 @@
 
 ## C. McClintock 
 ## Shift Research Lab 
-## Summer 2018 ## Updated: June 21, 2018 
+## Summer 2018 ## Updated: August 15th, 2018
 ## HOME Tool App: UI & Server
 
 # ..................................................................................................

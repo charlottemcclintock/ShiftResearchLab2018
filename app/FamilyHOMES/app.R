@@ -1,8 +1,8 @@
 
 ## C. McClintock 
 ## Shift Research Lab 
-## Summer 2018 ## Updated: June 21, 2018 
-## HOME Tool App: UI & Server
+## Summer 2018 ## Updated: August 15th, 2018
+## FamilyHOMES App: UI & Server
 
 # ..................................................................................................
 
@@ -163,7 +163,7 @@ ui <- shinyUI(fluidPage(theme = "bootstrap.css",
                                  For more information, or to see the code that produced this application, click", 
                                  tags$a(href = "https://github.com/charlottemcclintock/ShiftResearchLab2018", "here.")), 
                           htmlOutput("income_selector"),
-                          htmlOutput("clt_deduction"),
+  #                        htmlOutput("clt_deduction"),
                           tags$p("To use the version with industry and occupation inputs, click",
                                  tags$a(href = "https://charlottemccclintock.shinyapps.io/hometool", "here.")),
                           tags$a(href = "https://www.shiftresearchlab.org", tags$img(height = 90, src = "logo.png"))
@@ -240,7 +240,7 @@ server <- shinyServer(function(input, output) {
   
   # CREATE DATA FRAME FOR PLOT
   df <- reactive({
-    if (input$check==FALSE) {
+#    if (input$check==FALSE) {
             df <- parcels %>%
               filter(homevalue < 3*input$income) %>% 
               group_by(nbhd) %>%
@@ -250,21 +250,22 @@ server <- shinyServer(function(input, output) {
               mutate(affordable = 100*nless/ntotal) %>% right_join(nbhd, by="nbhd") %>% 
               left_join(parcels.county, by = "nbhd")
             df$affordable <- ifelse(is.na(df$affordable), 0, df$affordable)
-            df <- right_join(df, data, by = "nbhd")   }
-    else {
-      parcels <- mutate(parcels,
-                        homevalue = homevalue-75000)
-      df <- parcels %>%
-        filter(homevalue < 3*input$income) %>% 
-        group_by(nbhd) %>%
-        count() %>% 
-        ungroup() %>% 
-        rename("nless"="n") %>% left_join(parcels.nbhd, by = "nbhd") %>% 
-        mutate(affordable = 100*nless/ntotal) %>% right_join(nbhd, by="nbhd") %>% 
-        left_join(parcels.county, by = "nbhd")
-      df$affordable <- ifelse(is.na(df$affordable), 0, df$affordable)
-      df <- right_join(df, data, by = "nbhd") 
-    }
+            df <- right_join(df, data, by = "nbhd")  
+#            }
+#    else {
+#      parcels <- mutate(parcels,
+#                        homevalue = homevalue-75000)
+#      df <- parcels %>%
+#        filter(homevalue < 3*input$income) %>% 
+#        group_by(nbhd) %>%
+#        count() %>% 
+#        ungroup() %>% 
+#        rename("nless"="n") %>% left_join(parcels.nbhd, by = "nbhd") %>% 
+#        mutate(affordable = 100*nless/ntotal) %>% right_join(nbhd, by="nbhd") %>% 
+#        left_join(parcels.county, by = "nbhd")
+#      df$affordable <- ifelse(is.na(df$affordable), 0, df$affordable)
+#      df <- right_join(df, data, by = "nbhd") 
+#    }
   })
   
   # ..................................................................................................
