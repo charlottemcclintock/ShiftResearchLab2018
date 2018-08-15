@@ -219,9 +219,8 @@ ui <- shinyUI(fluidPage(theme = "bootstrap.css",
                           25th and 75th percentiles."),
                    tags$h5("Housing Affordability"),
                    tags$p("Parcel data was retrieved from the Adams, Arapahoe, Broomfield, Boulder, Denver, Douglas, 
-                          and Jefferson County assessor's offices. Where unit data was available, the total parcel value 
-                          was divided by number of units and each unit was counted separately. Where unit data was not 
-                          available, the data was restricted to single family homes. The housing affordability measure 
+                          and Jefferson County assessor's offices. The tool currently only uses parcel data for single 
+                          family homes, but will be expanded soon.  The housing affordability measure 
                           displays the percent of homes in each neighborhood for which the parcel value."),
                    tags$h5("School Quality"),
                    tags$p("School quality is determined by CMAS proficiency in reading and math for the three closest 

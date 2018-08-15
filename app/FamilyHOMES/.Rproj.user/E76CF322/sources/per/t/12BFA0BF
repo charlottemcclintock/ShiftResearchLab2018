@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1534190165827.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3088107005",
+    "id" : "12BFA0BF",
+    "lastKnownWriteTime" : 1534261471,
+    "last_content_update" : 1534261471959,
+    "path" : "~/R/ShiftResearchLab2018/app/FamilyHOMES/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "324,24",
+        "scrollLine" : "304"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
