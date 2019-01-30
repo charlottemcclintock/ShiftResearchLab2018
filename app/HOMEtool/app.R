@@ -9,10 +9,6 @@
 # set up: wd, retrieve data
 rm(list=ls())
 getwd()
-# if need be 
-# setwd("~/../../")
-# setwd("Users/charmed33/R/")
-# setwd("ShiftResearchLab2018/app/HOMEtool")
 
 library(knitr)
 library(tidyverse)
